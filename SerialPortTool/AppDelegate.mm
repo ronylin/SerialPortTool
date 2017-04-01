@@ -96,7 +96,7 @@
             [fmt release];
             size_t length=csp->readString(buffer, 1024*1024);
             NSLog(@"received data of length:%zu",length);
-            NSString *str=[NSString stringWithFormat:@"%@ : %@\n",timestr,[NSString stringWithUTF8String:buffer]];
+            NSString *str=[NSString stringWithFormat:@"%@ received: %@\n",timestr,[NSString stringWithUTF8String:buffer]];
             [[[txthistory textStorage]mutableString]appendString:str];
             [self performSelectorOnMainThread:@selector(display) withObject:nil waitUntilDone:YES];
 
@@ -187,7 +187,7 @@
 
     if(csp)
     {
-        NSString *str=[NSString stringWithFormat:@"%@ : %@\n",timestr,[txtSend stringValue]];
+        NSString *str=[NSString stringWithFormat:@"%@ send: %@\n",timestr,[txtSend stringValue]];
         [[[txthistory textStorage]mutableString]appendString:str];
         
         [self performSelectorInBackground:@selector(writeString:) withObject:str];
